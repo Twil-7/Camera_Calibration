@@ -1,0 +1,228 @@
+1、C++中的 ::
+
+C++中的双冒号 :: 作用：
+
+第一种，类作用域，用来标明类的变量、函数。
+Human::setName(char* name);
+
+第二种，命名空间作用域，用来注明所使用的类、函数属于哪一个命名空间的。
+std::cout << "Hello World" << std::endl;
+
+第三种，全局作用域，用来区分局部、全局的。很多时候写了一个全局函数或者想要调用一个全局函数，却发现IDE或者Editor找不到该函数，原因是因为局部函数与想要调用的全局函数名字一样，然后找了很久也找不到原因。其实就是因为 【局部变量/函数】 与 【全局变量/函数】 的名字相同，IDE无法区分，这时候加上 :: 就可以调用到全局函数，访问到全局变量了。
+
+
+2、STL教程：C++ STL快速入门 ： http://c.biancheng.net/stl/
+
+STL 是“Standard Template Library”的缩写，中文译为“标准模板库”。STL是C++标准库的一部分，不用单独安装。
+C++对模板Template支持得很好，STL就是借助模板把常用的数据结构及其算法都实现了一遍，并且做到了数据结构和算法的分离。vector的底层为顺序表、数组，list的底层为双向链表，deque的底层为循环队列，set的底层为红黑树，hash_set的底层为哈希表。
+
+
+3、C++ STL是什么，有什么用？
+
+STL，英文全称standard template library，译为标准模板库或者泛型库，其包含有大量的模板类和模板函数，是C++提供的一个基础模板的集合，用于完成诸如输入/输出、数学计算等功能。
+
+STL最初由惠普实验室开发，于1998年被定为国际标准，正式成为C++程序库的重要组成部分。值得一提的是，如今STL已完全被内置到支持C++的编译器中，无需额外安装，这可能也是STL被广泛使用的原因之一。STL就位于各个C++的头文件中，即它并非以二进制代码的形式提供，而是以源代码的形式提供。
+
+从根本上说，STL是一些容器、算法和其他一些组件的集合，所有容器和算法都是总结了几十年来算法和数据结构的研究成果，汇集了许多计算机专家学者经验的基础上实现的，因此可以说，STL基本上达到了各种存储方法和相关算法的高度优化。这里提到的容器，本质上就是封装有数据结构的模板类，例如 list、vector、set、map等。
+
+在C++中如果定义一个数组，可以采用如下方式： 
+int a[n];
+这种定义数组的方法需要事先确定好数组的长度，一般会将数组长度设为可能的最大值，但这极有可能导致存储空间的浪费。
+
+而如果采用在堆空间中动态申请内存的方法，此时长度可以是变量： 
+int *p = new int[n];
+新申请一个较大的内存空间，即执行int * temp = new int[m];
+将原内存空间的数据全部复制到新申请的内存空间中，即执行memecpy(temp, p, sizeof(int)*n);
+将原来的堆空间释放，即执行delete [] p; p = temp;
+
+
+而完成相同的操作，如果采用 STL 标准库，则会简单很多，因为大多数操作细节将不需要程序员关心。
+
+vector <int> a; //定义 a 数组，当前数组长度为0，但和普通数组不同的是，此数组a可以根据存储数据的数量自动变长。
+
+//向数组a中添加 10 个元素
+for (int i = 0; i < 10 ; i++)
+    a.push_back(i)
+
+
+4、C++ STL的发展历程是怎样的？
+
+Alexander Stepanov(STL标准模板库之父)，1950年出生与前苏联的莫斯科，他曾在莫斯科大学研究数学，此后一直致力于计算机语言和泛型库研究。在20世纪70年代，Stepanov开始考虑，在保证效率的前提下，是否能将算法从诸多具体应用之中抽象出来？
+
+就C/C++中的指针而言，它的灵活与高效运用使后来的STL在实现泛型化的同时更是保持了高效率。另外，在STL中占据极其重要地位的迭代器概念便是源自于C/C++中原生指针的一般化推广。
+
+1994年的滑铁卢会议上，委员们通过了提案，决定将STL正式纳入C++标准化进程之中，随后STL便被放进了会议的工作文件中。自此，STL终于成为C++家族中的重要一员。此后，随着C++标准的不断改进，STL也在不断地做着相应的演化。直至1998年，ANSI/ISO C++ 标准正式定案，STL始终是C++标准库不可或缺的重要组成部分。
+
+
+5、<opencv2/opencv.hpp>头文件作用：
+
+通过观察代码可知， opencv.hpp中己经包含了OpenCV各模块的头文件，如高层GUI图形用户界面模块头文件highgui.hpp、图像处理模块头文件imgproc.hpp、2D特征模块头文件features2d.hpp等。
+
+所以，我们在编写core、objdetect、imgproc、photo、video、features2d、calib3d、ml、highgui模块的应用程序时，原则上仅写上一句 #include <opencv2/opencv.hpp> 即可，这样可以精简优化代码。
+
+
+6、在c++语言中头文件 #include <stdio.h> 的作用：
+
+stdio.h，std是英文“标准”的缩写，io是英文“输入输出”的缩写，这个头文件里 含输入输出函数的声明和定义，一些常数，和宏。
+#include <stdio.h> 是宏命令，命令意思是: 编译开始时，以文本方式在这里嵌入文件stdio.h内容后，再进一步编译整个程序。
+
+
+7、Opencv定义输出vector容器的point类型的点：
+
+using namespace std;
+using namespace cv;
+
+// 生成一个二维点向量：
+vector<Point2f> vp2f;
+vp2f.push_back(Point2f(2, 3)); 
+
+// 生成一个含20个样本的三维点向量：
+vector<Point3f> vp3f(20);
+vp3f[i] = Point3f((float)(i + i), (float)(i * i), (float)(i + 1));
+
+
+8、Vector里面嵌套容器：
+
+std::vector<std::vector<cv::Point3f> > objpoints;
+std::vector<std::vector<cv::Point3f> > imgpoints;
+
+源码里的vector和官网介绍里不太相同，官网介绍中都是一个vector创建容器，里面指定数据类型，由此生成一个对象。而源码中嵌套使用了vector，也就是先指定opencv的Point3f、Point2f生成小容器，然后把这些小容器作为一个基本数据类型，生成一个专门包含小容器的大容器。大容器里的每一个值，都依然是一个容器。
+
+
+9、C++注释快捷键：
+
+Ctrl+K+C，即可实现//注释（选中多行也能注释）。
+Ctrl+K+U，取消//注释（多行也ok）。
+
+
+10、我发现了一个c++默认语法规则：
+
+cout可以输出标准库定义的模板对象，比如：std::vector<cv::Point3f> objp;
+但它无法输出自己定义的模板对象：
+std::vector<std::vector<cv::Point3f> > objpoints;
+std::vector<cv::String> images;
+
+
+11、cv::Size函数：
+
+CvSize，OpenCV的基本数据类型之一，表示矩阵框大小，以像素为精度。与CvPoint类似，但数据成员是integer的width和height。
+语法规则：
+cv::Size(CHECKERBOARD[0],CHECKERBOARD[1])
+cv::Size(11,11)
+
+
+12、OpenCV cv::TermCriteria 模板类：
+
+TermCriteria类定义在 /core/types.hpp 中
+成员变量
+
+enum
+{
+COUNT=1, //计算元素或者迭代次数最小值
+MAX_ITER=COUNT, //最大迭代次数
+EPS=2 //当满足该精确度时，迭代算法停止
+};
+
+
+type – 终止条件类型:
+maxCount – 计算的迭代数或者最大元素数
+epsilon – 当达到要求的精确度或参数的变化范围时，迭代算法停止
+
+
+13、opencv3中的glob函数读取文件夹中数据：
+
+glob在opencv3下，并且命名空间为cv::glob()能够直接调用，目的是将pattern路径下的所用文件名存进result中。
+
+std::vector<cv::String> filenames;
+cv::String folder = "/home/rui";
+
+cv::glob(folder, filenames);
+std::cout<<filenames[i]<<std::endl;
+cv::Mat src = cv::imread(filenames[i]);
+
+
+14、c++和opencv小知识：TermCriteria结构的使用：
+
+TermCriteria是许多opencv算法都在使用的迭代求解的结构。
+
+struct cv::TermCriteria(
+Public:
+//成员变量
+enum
+{
+COUNT=1,	  //计算元素或者迭代次数最小值
+MAX_ITER=COUNT,   //最大迭代次数
+EPS=2	          //当满足该精确度时，迭代算法停止
+};
+
+//构造函数
+TermCriteria::TermCriteria()
+TermCriteria::TermCriteria(int type, int maxCount, double epsilon)
+TermCriteria::TermCriteria(const CvTermCriteria& criteria)
+
+
+15、CMakeLists.txt 语法介绍与实例演练：
+
+cmake 是一个跨平台、开源的构建系统。它是一个集软件构建、测试、打包于一身的软件。它使用与平台和编译器独立的配置文件来对软件编译过程进行控制。
+
+（1）指定 cmake 的最小版本
+cmake_minimum_required(VERSION 3.4.1)
+
+这行命令是可选的，我们可以不写这句话，但在有些情况下，如果 CMakeLists.txt 文件中使用了一些高版本 cmake 特有的一些命令的时候，就需要加上这样一行，提醒用户升级到该版本之后再执行 cmake。
+
+（2）设置项目名称
+project(demo)
+
+它会引入两个变量demo_BINARY_DIR和demo_SOURCE_DIR，同时，cmake自动定义了两个等价的变量 PROJECT_BINARY_DIR和 PROJECT_SOURCE_DIR。
+
+（3）设置编译类型
+add_executable(demo demo.cpp) # 生成可执行文件
+add_library(common STATIC util.cpp) # 生成静态库
+add_library(common SHARED util.cpp) # 生成动态库或共享库
+
+（4）指定编译包含的源文件
+add_library(demo demo.cpp test.cpp util.cpp)
+
+（5）查找指定的库文件
+find_library(VAR name path)查找到指定的预编译库，并将它的路径存储在变量中。
+
+
+16、Cmake命令之project介绍：
+
+project命令用于指定cmake工程的名称，实际上，它还可以指定cmake工程的版本号（VERSION关键字）、简短的描述（DESCRIPTION关键字）、主页URL（HOMEPAGE_URL关键字）和编译工程使用的语言（LANGUAGES关键字）。
+
+实际上在调用project命令指定当前工程名字的同时，cmake内部会为如下变量赋值：
+
+PROJECT_NAME：将当前工程的名称赋值给PROJECT_NAME，对于本例子，就是${PROJECT_NAME}=mytest。
+PROJECT_SOURCE_DIR：当前工程的源码路径。
+PROJECT_BINARY_DIR：当前工程的二进制路径。
+
+roject命令并非必不可少，如果没有调用project命令，cmake仍然会生成一个默认的工程名“Project”，以及工程名对应的变量（例如PROJECT_NAME、CMAKE_PROJECT_NAME、PROJECT_SOURCE_DIR、<PROJECT_NAME>_SOURCE_DIR、PROJECT_BINARY_DIR、<PROJECT_NAME>_BINARY_DIR等）。但是VERSION、DESCRIPTION、HOMEPAGE_URL等选项对应的变量不会被赋值
+
+project命令需要放置在其他命令调用之前。
+
+
+17、find_package的作用:
+
+在CMakeLists.txt如果需要使用第三方库，那么需要知道三个东西: 去哪里找头文件(.h等)、去哪里找库文件(.so/.lib/.ddl等)、需要链接的库文件名称。find_package的作用就是去寻找该库的头文件位置、库文件位置以及库文件名称，并将其设为变量，返回提供给CMakeLists.txt其他部分使用。
+
+find_package(curl)
+include_directories(${CURL_INCLUDE_DIR})
+target_link_libraries(curltest ${CURL_LIBRARY})
+
+
+18、include_directories的作用：
+
+include_directories ([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])
+将指定目录添加到编译器的头文件搜索路径之下，指定的目录被解释成当前源码路径的相对路径。
+
+
+19、cmake中ADD_EXECUTABLE的作用:
+
+add_executable: 使用给定的源文件，为工程引入一个可执行文件。
+使用指定的源文件来生成目标可执行文件。这里的目标可执行文件分为三类：普通可执行目标文件、导入可执行目标文件、别名可执行目标文件。分别对应上面的三种命令格式。
+
+
+20、cmake中TARGET_LINK_LIBRARIES的作用：
+
+target_link_libraries：该指令的作用为将目标文件与库文件进行链接。
